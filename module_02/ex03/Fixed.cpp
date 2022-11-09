@@ -171,7 +171,6 @@ void Fixed::setRawBits(int const raw)
 
 float Fixed::toFloat(void) const
 {
-    printf("number : %f  -- fract: %d\n", float(this->number) ,(1 << fractional_bits));
     return float(this->number) / (1 << fractional_bits);
 }
 

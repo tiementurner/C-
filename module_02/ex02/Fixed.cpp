@@ -35,6 +35,8 @@ Fixed& Fixed::operator=(const Fixed &f1)
     return *this;
 }
 
+//comparison operators:
+
 bool Fixed::operator>(const Fixed &f1)
 {
     return this->number > f1.number;
@@ -64,6 +66,8 @@ bool Fixed::operator!=(const Fixed &f1)
 {
     return this->number != f1.number;
 }
+
+//arithmetic operators
 
 Fixed Fixed::operator+(const Fixed &f1)
 {
@@ -96,6 +100,8 @@ Fixed Fixed::operator/(const Fixed &f1)
     result.setRawBits(this->number / f1.number);
     return (result);
 }
+
+//Increment operators
 
 Fixed& Fixed::operator++()
 {
@@ -170,7 +176,6 @@ void Fixed::setRawBits(int const raw)
 
 float Fixed::toFloat(void) const
 {
-    printf("number : %f  -- fract: %d\n", float(this->number) ,(1 << fractional_bits));
     return float(this->number) / (1 << fractional_bits);
 }
 
