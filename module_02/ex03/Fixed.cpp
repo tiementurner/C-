@@ -85,7 +85,6 @@ Fixed Fixed::operator*(const Fixed &f1)
 {
     Fixed result;
 
-    printf("f1: %d\n", f1.number);
     result.setRawBits(this->number * f1.number >> fractional_bits);
     return (result);
 }

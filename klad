@@ -1,0 +1,12 @@
+Fixed point met base 10
+
+getal: 10 
+fractional bits : 1
+== 10.0 << 1 (bitshift with base 10 means move decimal point 1 place to the right)
+== fixed point stored value = 100
+
+getal: 10.5
+fractional bits : 1
+== 10.5 << 1
+== fixed point stored value = 105
+== 

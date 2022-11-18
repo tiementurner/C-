@@ -41,6 +41,7 @@ ClapTrap& ClapTrap::operator =(const ClapTrap &c)
     return (*this);
 }
 
+
 void ClapTrap::attack(const std::string& target)
 {
     if (this->hit_points <= 0 || this->energy_points <= 0)

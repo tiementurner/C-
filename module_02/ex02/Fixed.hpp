@@ -45,7 +45,7 @@ class Fixed
 
     private:
         int                 number;
-        static const int    fractional_bits = 8;
+        static const int    fractional_bits = 4;
 };
 
 std::ostream& operator << (std::ostream& o, const Fixed &f1);

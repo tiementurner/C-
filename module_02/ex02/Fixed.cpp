@@ -3,34 +3,28 @@
 Fixed::Fixed() : 
                 number(0)
 {
-    std::cout << "Default constructor called" << std::endl;
 }
 Fixed::Fixed(const int num)
 {
-    std::cout << "Int constructor called" << std::endl;
-    this->number = (num << fractional_bits);
+    this->number = (num << this->fractional_bits);
 }
 
 Fixed::Fixed(float const val)
 {
-    std::cout << "Float constructor called" << std::endl;
-    this->number = int(roundf(val * (1 << fractional_bits)));
+    this->number = int(roundf(val * (1 << this->fractional_bits)));
 }
 
 Fixed::~Fixed()
 {
-    std::cout << "Destructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &f1) 
 {
-    std::cout << "Copy constructor called" << std::endl;
     *this = f1;
 }
 
 Fixed& Fixed::operator=(const Fixed &f1)
 {
-    std::cout << "Copy assignment operator called" << std::endl;
     this->number = f1.getRawBits();
     return *this;
 }
@@ -87,31 +81,31 @@ Fixed Fixed::operator-(const Fixed &f1)
 
 Fixed Fixed::operator*(const Fixed &f1)
 {
-    Fixed result;
-
-    result.setRawBits(this->number * f1.number >> fractional_bits);
-    return (result);
+    float result;
+    result = this->toFloat() * f1.toFloat();
+    Fixed temp(result);
+    return (temp);
 }
 
 Fixed Fixed::operator/(const Fixed &f1)
 {
-    Fixed result;
-
-    result.setRawBits(this->number / f1.number);
-    return (result);
+    float result;
+    result = this->toFloat() / f1.toFloat();
+    Fixed temp(result);
+    return (temp);
 }
 
 //Increment operators
 
 Fixed& Fixed::operator++()
 {
-    this->number++;
+    ++this->number;
     return(*this);
 }
 
 Fixed& Fixed::operator--()
 {
-    this->number--;
+    --this->number;
     return(*this);
 }
 
@@ -164,13 +158,11 @@ const Fixed& Fixed::max(const Fixed &a, const Fixed &b)
 
 int Fixed::getRawBits(void) const
 {
-    std::cout << "getRawBits member function called" << std::endl;
     return (this->number);
 }
 
 void Fixed::setRawBits(int const raw)
 {
-    std::cout << "setRawBits member function called" << std::endl;
     this->number = raw;
 }
 

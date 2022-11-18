@@ -1,4 +1,0 @@
-struct data
-{
-    int number;
-};
