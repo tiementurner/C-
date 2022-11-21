@@ -4,9 +4,7 @@ NAME = ex02
 
 CC = c++
 
-FILES = main.cpp \
-		Base.cpp
-	
+FILES = main.cpp Fixed.cpp
 
 OFILES = $(FILES:.cpp=.o)
 

@@ -1,12 +1,10 @@
 CC_FLAGS = -Wall -Werror -Wextra -std=c++98
 
-NAME = ex02
+NAME = ex00
 
 CC = c++
 
-FILES = main.cpp \
-		Base.cpp
-	
+FILES = main.cpp Fixed.cpp
 
 OFILES = $(FILES:.cpp=.o)
 

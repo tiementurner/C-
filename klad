@@ -10,3 +10,10 @@ fractional bits : 1
 == 10.5 << 1
 == fixed point stored value = 105
 == 
+
+    a = 2;
+    b = 2;
+    std::cout << &b << std::endl;
+    std::cout << &::max(a, b) << std::endl;
+    std::cout << &b << std::endl;
+    std::cout << &::min(a, b) << std::endl;

@@ -42,5 +42,7 @@ int main( void ) {
         std::cout << "a is kleiner of gelijk aan b" << std::endl;
     if (a >= b)
         std::cout << "a groter of gelijk b" << std::endl;
+
+    std::cout << (2 << 31) << std::endl;
     return 0;
 }
