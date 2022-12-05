@@ -35,4 +35,5 @@ int main()
 //base class so to instanciate the inherited members it first needs a copy of ClapTrap so it can refer to 
 //the base class data
 
-//the destructor comes first because the base class destructor cannot refer to data from the derived class
+//the destructor from the inherited class comes first because the base class destructor cannot refer to 
+//data from the derived class

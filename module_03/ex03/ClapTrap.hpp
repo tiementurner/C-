@@ -26,4 +26,3 @@ class ClapTrap
         unsigned int         energy_points;
         unsigned int         attack_damage;
 };
-
