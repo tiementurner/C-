@@ -20,8 +20,9 @@ class ClapTrap
         std::string get_name() const;
 
     private:
-        std::string name;
+
     protected:
+        std::string name;
         int         hit_points;
         int         energy_points;
         int         attack_damage;

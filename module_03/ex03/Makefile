@@ -1,6 +1,6 @@
 CC_FLAGS = -Wall -Werror -Wextra -std=c++98
 
-NAME = ex02
+NAME = ex03
 
 CC = c++
 

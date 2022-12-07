@@ -7,9 +7,9 @@ DiamondTrap::DiamondTrap() :
     name("default")
 {
     
-    this->hit_points = FragTrap::hp;
-    this->energy_points = ScavTrap::ep;
-    this->attack_damage = FragTrap::ad;
+    this->hit_points = FragTrap::hit_points;
+    this->energy_points = ScavTrap::energy_points;
+    this->attack_damage = FragTrap::attack_damage;
     std::cout << "Diamond constructor called." << std::endl;
 }
 
@@ -19,18 +19,27 @@ DiamondTrap::DiamondTrap(std::string name) :
     FragTrap(name)
 {
     this->name = name;
-    this->energy_points = ScavTrap::ep;
-    this->attack_damage = FragTrap::ad;
-    this->hit_points = FragTrap::hp;
+    this->energy_points = ScavTrap::energy_points;
+    this->attack_damage = FragTrap::attack_damage;
+    this->hit_points = FragTrap::hit_points;
     std::cout << "Diamond constructor called." << std::endl;
 }
 
-DiamondTrap& DiamondTrap::operator=(const DiamondTrap& rhs)
+DiamondTrap::DiamondTrap(const DiamondTrap &other)
 {
-	ClapTrap::operator=(rhs);
-	ScavTrap();
-	FragTrap();
-	return *this;
+    *this = other;
+}
+
+DiamondTrap& DiamondTrap::operator=(const DiamondTrap& other)
+{
+    if (this != &other)
+    {
+        name = other.name;
+        ClapTrap::operator=(other);
+        ScavTrap::operator=(other);
+        FragTrap::operator=(other);
+    }
+    return *this;
 }
 
 DiamondTrap::~DiamondTrap()

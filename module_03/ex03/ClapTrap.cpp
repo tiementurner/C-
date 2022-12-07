@@ -53,7 +53,7 @@ void ClapTrap::attack(const std::string& target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-    if (this->hit_points <= 0 || this->energy_points <= 0)
+    if (this->hit_points <= 0)
     {
         std::cout << this->name << " is a useless piece of trash." << std::endl;
         return ;

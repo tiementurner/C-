@@ -1,6 +1,8 @@
+#pragma once
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 #include <iostream>
+#include <string>
 
 class DiamondTrap : public ScavTrap, public FragTrap
 {
