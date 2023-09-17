@@ -5,8 +5,7 @@ NAME = ex00
 CC = c++
 
 FILES = main.cpp \
-		write.cpp \
-		check_scalar.cpp
+		ScalarConverter.cpp
 	
 
 OFILES = $(FILES:.cpp=.o)
