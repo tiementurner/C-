@@ -81,6 +81,3 @@ int main()
     std::advance(list_result, 1);
     std::cout << "result after advancing one: " << *list_result << std::endl << std::endl;
 }
-
-// for(std::vector<int>::size_type i = 0; i < int_vector.size(); i++)
-//         std::cout << int_vector[i];

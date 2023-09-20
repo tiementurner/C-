@@ -5,10 +5,10 @@ int main()
     Span simple = Span(5);
 
     simple.addNumber(6);
-    simple.addNumber(4);
-    simple.addNumber(5);
-    simple.addNumber(5);
-    simple.addNumber(5);
+    simple.addNumber(3);
+    simple.addNumber(17);
+    simple.addNumber(9);
+    simple.addNumber(11);
     try{simple.addNumber(5);}
     catch(const std::length_error &e){std::cout << e.what() << std::endl;}
     simple.print();
@@ -19,6 +19,17 @@ int main()
     Span empty;
     empty.print();
     try{empty.shortestSpan();}
+    catch(std::range_error &e){std::cout << e.what() << std::endl;}
+    try{empty.longestSpan();}
+    catch(std::range_error &e){std::cout << e.what() << std::endl;}
+    std::cout << "\n\n" << std::endl;
+    
+    Span single(1);
+    single.addNumber(1);
+    single.print();
+    try{single.shortestSpan();}
+    catch(std::range_error &e){std::cout << e.what() << std::endl;}
+    try{single.longestSpan();}
     catch(std::range_error &e){std::cout << e.what() << std::endl;}
     std::cout << "\n\n";
 
