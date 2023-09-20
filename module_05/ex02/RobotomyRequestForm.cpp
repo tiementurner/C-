@@ -1,53 +1,38 @@
 #include "RobotomyRequestForm.hpp"
 
-/*
-** ------------------------------- CONSTRUCTOR --------------------------------
-*/
 
 RobotomyRequestForm::RobotomyRequestForm() :
-	Form("pardon","default", 72, 45)
+	AForm("RobotomyRequestForm","default", 72, 45)
 {
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string name, std::string target) : 
-	Form(name, target, 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : 
+	AForm("RobotomyRequestForm", target, 72, 45)
 {
 }
 
 RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm & src ) :
-	Form(src)
+	AForm(src)
 {
 }
-
-
-/*
-** -------------------------------- DESTRUCTOR --------------------------------
-*/
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {
 }
 
 
-/*
-** --------------------------------- OVERLOAD ---------------------------------
-*/
-
 RobotomyRequestForm &				RobotomyRequestForm::operator=( RobotomyRequestForm const & rhs )
 {
-	this->Form::operator=(rhs);
+	this->AForm::operator=(rhs);
 	return *this;
 }
 
-/*
-** --------------------------------- METHODS ----------------------------------
-*/
 
 void RobotomyRequestForm::action(Bureaucrat const & executor) const
 {
 	try
 	{
-		this->Form::execute(executor);
+		this->AForm::execute(executor);
 	}
 	catch(std::exception & e)
 	{
@@ -59,7 +44,7 @@ void RobotomyRequestForm::action(Bureaucrat const & executor) const
 	rand();
 	if (rand() < RAND_MAX / 2)
 	{
-		std::cout << this->Form::get_target() << " Is robotomized." << std::endl;
+		std::cout << this->AForm::get_target() << " Is robotomized." << std::endl;
 		return ;
 	}
 	else
@@ -68,10 +53,3 @@ void RobotomyRequestForm::action(Bureaucrat const & executor) const
 		return ;
 	}
 }
-
-/*
-** --------------------------------- ACCESSOR ---------------------------------
-*/
-
-
-/* ************************************************************************** */

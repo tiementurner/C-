@@ -63,6 +63,10 @@
         "typeinfo": "cpp",
         "unordered_map": "cpp",
         "utility": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "*.tpp": "cpp",
+        "filesystem": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp"
     }
 }

@@ -1,11 +1,10 @@
-CC_FLAGS = -Wall -Werror -Wextra -std=c++98
+CC_FLAGS = -Wall -Werror -Wextra -std=c++98 -MD
 
-NAME = ex00
+NAME = ex01
 
 CC = c++
 
 FILES = main.cpp \
-		Bureaucrat.cpp
 
 OFILES = $(FILES:.cpp=.o)
 
@@ -16,21 +15,24 @@ NORMAL = \033[38;5;255m
 
 all : $(NAME)
 
-$(NAME) : $(OFILES)
+$(NAME) : $(OFILES) 
 	@$(CC) $(CC_FLAGS) $(OFILES) -o $(NAME)
 	@echo "-----------------------------------"
 	@echo "$(BLUE)Created executable:$(NORMAL)	$(NAME)"
 	@echo "-----------------------------------"
 
-%.o : %.cpp
+
+%.o : %.cpp 
 	@echo "$(GREEN)Created object file:$(NORMAL)	$@"
-	@$(CC) $(CC_FLAGS) -c $< -o $@
+	@$(CC) $(CC_FLAGS) -c $< -o $@ 
+
+-include $(OFILES:.o=.d)
 
 clean	:
 	@echo "-----------------------------------"
 	@echo "$(RED)Object files removed.$(NORMAL)"
 	@echo "-----------------------------------"
-	@rm -rf $(OFILES)
+	@rm -rf $(OFILES) $(OFILES:.o=.d)
 
 fclean	:	clean
 	@echo "$(RED)./$(NAME) removed.$(NORMAL)"

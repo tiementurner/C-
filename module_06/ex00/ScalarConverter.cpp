@@ -88,7 +88,7 @@ bool ScalarConverter::check_double(std::string literal)
 
 
 template<typename T>
-void func(T actual){
+static void cast(T actual){
     int scientific = 0;
     if (actual != actual)
         scientific = NAN;
@@ -98,25 +98,25 @@ void func(T actual){
         scientific = MIN_INF;
 
     std::cout << "char: ";
-    if ((actual > 32 && actual < 127) && scientific == 0)
-        std::cout << (char)actual << std::endl;
+    if ((actual >= 32 && actual < 127) && scientific == 0)
+        std::cout << static_cast<char>(actual) << std::endl;
     else
         std::cout << "impossible" << std::endl;
     
     std::cout << "int: ";
     if ((actual < INT32_MAX && actual > -INT32_MAX) && scientific == 0)
-        std::cout << (int)actual << std::endl;
+        std::cout << static_cast<int>(actual) << std::endl;
     else
         std::cout << "impossible" << std::endl;
     
 
     std::cout << "float: ";
     scientific == INF ? std::cout << "+":std::cout << "";
-    std::cout << (float)actual << "f" << std::endl;
+    std::cout << static_cast<float>(actual) << "f" << std::endl;
 
     std::cout << "double: ";
     scientific == INF ? std::cout << "+":std::cout << "";
-    std::cout << (double)actual << std::endl;
+    std::cout << static_cast<double>(actual) << std::endl;
 }
 
 std::string ScalarConverter::convert(std::string literal)
@@ -125,22 +125,22 @@ std::string ScalarConverter::convert(std::string literal)
     if (check_char(literal) == true)
     {
         conversion_type = CHAR;
-        func<char>(literal[0]);
+        cast<char>(literal[0]);
     }
     if (check_int(literal) == true && conversion_type == 0)
     {
         conversion_type = INT;
-        func<int>(std::stoi(literal));
+        cast<int>(std::stoi(literal));
     }
     if ((check_float(literal) || literal == "-inff" || literal == "+inff" || literal == "nanf") && conversion_type == 0)
     {
         conversion_type = FLOAT;
-        func<float>(std::stof(literal));
+        cast<float>(std::stof(literal));
     }
     if ((check_double(literal) || literal == "-inf" || literal == "+inf" || literal == "nan") && conversion_type == 0)
     {
         conversion_type = DOUBLE;
-        func<double>(std::stod(literal));
+        cast<double>(std::stod(literal));
     }
     if (conversion_type == 0)
         std::cout << "No valid type detected!" << std::endl;

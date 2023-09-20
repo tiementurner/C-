@@ -13,7 +13,7 @@ class Form
 	public:
 
 		Form();
-		Form(const std::string name, const unsigned int exec_grade, const unsigned sign_grade);
+		Form(const std::string name, const  int exec_grade, const int sign_grade);
 		Form( Form const & src );
 		~Form();
 
@@ -55,10 +55,10 @@ class Form
 		};
 
 	private:
-		std::string const			name;
-		unsigned int		const	exec_grade;
-		unsigned int 		const	sign_grade;
-		bool 						_signed;
+		std::string const	name;
+		int			const	exec_grade;
+		int 		const	sign_grade;
+		bool 				_signed;
 
 };
 

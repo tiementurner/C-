@@ -1,21 +1,7 @@
-#include <iostream>
-#include <iomanip>
-#include <cstdint>
+#include "Serializer.hpp"
 
-struct Data
-{
-    int number;
-};
 
-uintptr_t serialize(Data *ptr)
-{
-    return reinterpret_cast<uintptr_t>(ptr);
-}
 
-Data* deserialize(uintptr_t raw)
-{
-    return reinterpret_cast<Data*>(raw);
-}
 
 int main() 
 {
@@ -27,10 +13,12 @@ int main()
 	data = new Data;
 
 	std::cout << "Random data: " << data << std::endl;
-	raw = serialize(data);
+	raw = Serializer::serialize(data);
 	std::cout << "random data as uintptr: " << raw << std::endl;
-	result = deserialize(raw);
+	result = Serializer::deserialize(raw);
 	std::cout << "uintptr as data: " << result << std::endl;
+
+	std::cout << sizeof(uintptr_t) << std::endl;
 
 	delete data;
 	return 0;

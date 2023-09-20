@@ -1,4 +1,4 @@
-CC_FLAGS = -Wall -Werror -Wextra -std=c++98 -g
+CC_FLAGS = -Wall -Werror -Wextra -std=c++98
 
 NAME = ex02
 
@@ -6,7 +6,7 @@ CC = c++
 
 FILES = main.cpp \
 		Bureaucrat.cpp \
-		Form.cpp \
+		AForm.cpp \
 		PresidentialPardonForm.cpp \
 		RobotomyRequestForm.cpp \
 		ShrubberyCreationForm.cpp

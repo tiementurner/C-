@@ -1,4 +1,4 @@
-CC_FLAGS = -Wall -Werror -Wextra -std=c++98 -g
+CC_FLAGS = -Wall -Werror -Wextra -std=c++98
 
 NAME = ex01
 

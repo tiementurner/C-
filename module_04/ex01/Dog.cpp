@@ -18,17 +18,19 @@ Dog::Dog(const Dog &c)
 {
 	this->dog_brain = NULL;
 	*this = c;
-	this->type = "Deep dog copy";
+	this->type = "dog copy";
 	std::cout << "copyDog" << std::endl;
 }
 
 Dog& Dog::operator=(const Dog& other)
 {
-	this->type = other.type;
-	if (this->dog_brain)
-		delete this->dog_brain;
-
-	this->dog_brain = new Brain(*other.dog_brain);
+	if (this != &other)
+	{
+		this->type = other.type;
+		if (this->dog_brain)
+			delete this->dog_brain;
+		this->dog_brain = new Brain(*other.dog_brain);
+	}
 	std::cout << "dog operator assignment" << std::endl;
 	return (*this);
 }

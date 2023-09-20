@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cstdlib>
 
+
 Base* generate()
 {
     int i;
@@ -40,6 +41,7 @@ void identify (Base& p)
         (void)refA;
     }catch(...){}
         try{
+
         B& refB = dynamic_cast<B&>(p);
         std::cout << "Class is of type B." << std::endl;
         (void)refB;
@@ -52,6 +54,7 @@ void identify (Base& p)
     return;
 }
 
+
 int main()
 {   
     A *classA = new A;
@@ -63,5 +66,8 @@ int main()
     identify(*classA);
     identify(*classB);
     identify(*classC);
-
+    std::cout << std::endl << "randomly generated:" << std::endl;
+    Base *random = generate();
+    identify(random);
+    identify(*random);
 }

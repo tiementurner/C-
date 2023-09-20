@@ -1,16 +1,15 @@
-#ifndef PRESIDENTIALPARDONFORM_HPP
-# define PRESIDENTIALPARDONFORM_HPP
+#pragma once
 
-# include "Form.hpp"
+# include "AForm.hpp"
 # include <iostream>
 # include <string>
 
-class PresidentialPardonForm : public Form
+class PresidentialPardonForm : public AForm
 {
 
 	public:
 		PresidentialPardonForm();
-		PresidentialPardonForm(std::string name, std::string target);
+		PresidentialPardonForm(std::string target);
 		PresidentialPardonForm(PresidentialPardonForm const & src );
 		~PresidentialPardonForm();
 
@@ -23,5 +22,3 @@ class PresidentialPardonForm : public Form
 };
 
 std::ostream &			operator<<( std::ostream & o, PresidentialPardonForm const & i );
-
-#endif /* ****************************************** PRESIDENTIALPARDONFORM_H */

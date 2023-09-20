@@ -1,54 +1,42 @@
 #include "ShrubberyCreationForm.hpp"
 
-/*
-** ------------------------------- CONSTRUCTOR --------------------------------
-*/
+
 
 ShrubberyCreationForm::ShrubberyCreationForm() :
-	Form("pardon","default", 145, 137)
+	AForm("ShrubberyCreationForm","default", 145, 137)
 {
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string name, std::string target) : 
-	Form(name, target, 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : 
+	AForm("ShrubberyCreationForm", target, 145, 137)
 {
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm & src ) :
-	Form(src)
+	AForm(src)
 {
 }
 
 
-/*
-** -------------------------------- DESTRUCTOR --------------------------------
-*/
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
 }
 
 
-/*
-** --------------------------------- OVERLOAD ---------------------------------
-*/
-
 ShrubberyCreationForm &				ShrubberyCreationForm::operator=( ShrubberyCreationForm const & rhs )
 {
-	this->Form::operator=(rhs);
+	this->AForm::operator=(rhs);
 	return *this;
 }
 
-/*
-** --------------------------------- METHODS ----------------------------------
-*/
 
 void ShrubberyCreationForm::action(Bureaucrat const & executor) const
 {
 	std::string string = "ASCII trees";
 	try
 	{
-		this->Form::execute(executor);
+		this->AForm::execute(executor);
 	}
 	catch(std::exception & e)
 	{
@@ -65,10 +53,3 @@ void ShrubberyCreationForm::action(Bureaucrat const & executor) const
 	}
 	std::cout << "File created!" << std::endl;
 }
-
-/*
-** --------------------------------- ACCESSOR ---------------------------------
-*/
-
-
-/* ************************************************************************** */

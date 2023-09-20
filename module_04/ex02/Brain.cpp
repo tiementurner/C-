@@ -17,7 +17,8 @@ Brain::Brain(const Brain & other)
 
 Brain& Brain::operator=(const Brain& other)
 {
-    *this->ideas = *other.ideas;
+    if (this != &other)
+        *this->ideas = *other.ideas;
     return (*this);
 }
 

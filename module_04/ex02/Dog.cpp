@@ -24,11 +24,13 @@ Dog::Dog(const Dog &c)
 
 Dog& Dog::operator=(const Dog& other)
 {
-	this->type = other.type;
-	if (this->dog_brain)
-		delete this->dog_brain;
-
-	this->dog_brain = new Brain(*other.dog_brain);
+	if (this != &other)
+	{
+		this->type = other.type;
+		if (this->dog_brain)
+			delete this->dog_brain;
+		this->dog_brain = new Brain(*other.dog_brain);
+	}
 	std::cout << "dog operator assignment" << std::endl;
 	return (*this);
 }

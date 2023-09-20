@@ -1,17 +1,17 @@
 #pragma once
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
 #include <string>
 #include <iostream>
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
     private:
         std::string const name;
-        unsigned int grade;
+        int               grade;
     public:
         Bureaucrat();
         Bureaucrat(std::string const name, int grade);
@@ -20,12 +20,12 @@ class Bureaucrat
         Bureaucrat& operator=(const Bureaucrat& other);
 
         std::string          getName() const;
-        unsigned int         getGrade() const;
+        int                  getGrade() const;
         void                 increment();
         void                 decrement();
 
-        void                 signForm(Form & form);
-        void                 executeForm(Form const &form);
+        void                 signForm(AForm & form);
+        void                 executeForm(AForm const &form);
 
         class GradeTooHighException : public std::exception
         {

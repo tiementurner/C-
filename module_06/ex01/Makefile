@@ -5,6 +5,7 @@ NAME = ex01
 CC = c++
 
 FILES = main.cpp \
+		Serializer.cpp
 	
 
 OFILES = $(FILES:.cpp=.o)

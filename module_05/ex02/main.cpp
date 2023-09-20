@@ -1,7 +1,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
 
@@ -9,7 +9,7 @@ int main()
 {
 	std::string target = "tar";
     Bureaucrat tar("tar", 42);
-	PresidentialPardonForm ppf("ppf", target);
+	PresidentialPardonForm ppf(target);
 	
 	tar.signForm(ppf);
 	ppf.action(tar);
@@ -26,9 +26,11 @@ int main()
 	tar.signForm(ppf);
 	tar.executeForm(ppf);
 	std::cout<< std::endl << std::endl;
+	///////////////////////
 
+	
 	Bureaucrat crazyman("crazyman", 73);
-	RobotomyRequestForm rrf("rrf", crazyman.getName());
+	RobotomyRequestForm rrf(crazyman.getName());
 
 	crazyman.signForm(rrf);
 	rrf.action(crazyman);
@@ -43,9 +45,12 @@ int main()
 	std::cout << crazyman << std::endl;
 	crazyman.signForm(rrf);
 	crazyman.executeForm(rrf);
+	std::cout<< std::endl << std::endl;
+	//////////////////////////
 
+	
 	Bureaucrat normalman("normalman", 146);
-	ShrubberyCreationForm scf("scf", normalman.getName());
+	ShrubberyCreationForm scf(normalman.getName());
 
 	normalman.signForm(scf);
 	scf.action(normalman);

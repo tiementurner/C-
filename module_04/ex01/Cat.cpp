@@ -25,11 +25,13 @@ Cat::Cat(const Cat &c)
 
 Cat& Cat::operator=(const Cat& other)
 {
-	this->type = other.type;
-	if (this->cat_brain)
-		delete this->cat_brain;
-	
-	this->cat_brain = new Brain(*other.cat_brain);
+	if (this != &other)
+	{
+		this->type = other.type;
+		if (this->cat_brain)
+			delete this->cat_brain;
+		this->cat_brain = new Brain(*other.cat_brain);
+	}
 	std::cout << "Cat operator assignment" << std::endl;
 	return (*this);
 }

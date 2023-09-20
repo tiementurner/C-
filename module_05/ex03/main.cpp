@@ -1,7 +1,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "Intern.hpp"
 
@@ -9,7 +9,7 @@ int main()
 {
 	std::string target = "tar";
     Bureaucrat tar("tar", 42);
-	Form *ppf, *rrf;
+	AForm *ppf, *rrf, *scf;
 	Intern someRandomIntern;
 	
 	ppf = someRandomIntern.makeForm("presidential pardon", target);
@@ -30,8 +30,8 @@ int main()
 	tar.executeForm(*ppf);
 	std::cout<< std::endl << std::endl;
 
+
 	Bureaucrat crazyman("crazyman", 73);
-	// RobotomyRequestForm rrf("rrf", crazyman.getName());
 	rrf = someRandomIntern.makeForm("robotomy request", target);
 
 	crazyman.signForm(*rrf);
@@ -47,21 +47,23 @@ int main()
 	std::cout << crazyman << std::endl;
 	crazyman.signForm(*rrf);
 	crazyman.executeForm(*rrf);
+	std::cout<< std::endl << std::endl;
 
-	// Bureaucrat normalman("normalman", 146);
-	// ShrubberyCreationForm scf("scf", normalman.getName());
 
-	// normalman.signForm(scf);
-	// scf.action(normalman);
+	Bureaucrat normalman("normalman", 146);
+	scf = someRandomIntern.makeForm("shrubbery creation", target);
 
-	// normalman.increment();
-	// std::cout << normalman << std::endl;
-	// normalman.signForm(scf);
-	// normalman.executeForm(scf);
+	normalman.signForm(*scf);
+	scf->action(normalman);
 
-	// for(int i = 0; i < 27 ; i++)
-	// 	normalman.increment();
-	// std::cout << normalman << std::endl;
-	// normalman.signForm(scf);
-	// normalman.executeForm(scf);
+	normalman.increment();
+	std::cout << normalman << std::endl;
+	normalman.signForm(*scf);
+	normalman.executeForm(*scf);
+
+	for(int i = 0; i < 27 ; i++)
+		normalman.increment();
+	std::cout << normalman << std::endl;
+	normalman.signForm(*scf);
+	normalman.executeForm(*scf);
 }

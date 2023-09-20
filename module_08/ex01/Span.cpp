@@ -101,7 +101,7 @@ unsigned int Span::longestSpan() const
     return (diff);
 }
 
-void Span::addRange(std::vector<int>::iterator start, std::vector<int>::iterator end) {
+void Span::addRange(Iterator start, Iterator end) {
 	unsigned int temp_size = storage.size();
     if (filled + std::distance(start, end) > this->maximum) {
 		throw std::range_error("addRange err: Range too big for span.");
