@@ -18,9 +18,9 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other)
 
 bool ScalarConverter::check_char(std::string literal)
 {
-    if (!isdigit(literal[0]) && !literal[1])
-        return (1);
-    return (0);
+    if ((literal[0] != '\'' || literal[2] != '\'') && literal.size() != 3 )
+        return (0);
+    return (1);
 }
 
 bool ScalarConverter::check_int(std::string string)
@@ -125,7 +125,7 @@ std::string ScalarConverter::convert(std::string literal)
     if (check_char(literal) == true)
     {
         conversion_type = CHAR;
-        cast<char>(literal[0]);
+        cast<char>(literal[1]);
     }
     if (check_int(literal) == true && conversion_type == 0)
     {
