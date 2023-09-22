@@ -54,6 +54,8 @@ int main()
     // huge.addRange(vectortje.begin(), vectortje.end());
     // huge.addRange(vectortje.begin(), vectortje.end());
     // huge.print();
+    // std::cout << "shortest span = " << huge.shortestSpan() << std::endl;
+    // std::cout << "longest span = " << huge.longestSpan() << std::endl;
     // try{huge.addRange(vectortje.begin(), vectortje.end());}
     // catch(const std::range_error &e){std::cout << e.what() << std::endl;}
 }
