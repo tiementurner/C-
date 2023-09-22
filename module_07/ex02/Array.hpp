@@ -28,7 +28,8 @@ class Array
         };
 
     private:
-        T				*ptr;
-        std::size_t		number_of_elements;
+        T           *ptr;
+        std::size_t  number_of_elements;
 };
+
 #include "Array.tpp"

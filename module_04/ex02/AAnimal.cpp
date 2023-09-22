@@ -18,8 +18,11 @@ AAnimal::AAnimal(const AAnimal& a) {
 
 AAnimal& AAnimal::operator=(const AAnimal &a)
 {
-	this->type = a.type;
-	std::cout << "AAnimal assignment" << std::endl;
+	if(this != &a)
+	{
+		this->type = a.type;
+		std::cout << "AAnimal assignment" << std::endl;
+	}
 	return *this;
 }
 

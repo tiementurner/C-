@@ -1,9 +1,5 @@
 #include "Form.hpp"
 
-/*
-** ------------------------------- CONSTRUCTOR --------------------------------
-*/
-
 Form::Form() : 
 	name("default"), 
 	exec_grade(150),
@@ -12,7 +8,7 @@ Form::Form() :
 {
 }
 
-Form::Form(const std::string name, const unsigned int exec_grade, const unsigned sign_grade) :
+Form::Form(const std::string name, const int exec_grade, const int sign_grade) :
 	name(name),
 	exec_grade(exec_grade),
 	sign_grade(sign_grade)
@@ -34,18 +30,10 @@ Form::Form(const Form & other) :
 }
 
 
-/*
-** -------------------------------- DESTRUCTOR --------------------------------
-*/
-
 Form::~Form()
 {
 }
 
-
-/*
-** --------------------------------- OVERLOAD ---------------------------------
-*/
 
 Form &				Form::operator=( Form const & rhs )
 {
@@ -64,12 +52,6 @@ std::ostream &			operator<<( std::ostream & o, Form const & i )
 	  << "is signed = " << i.get_signed() << std::endl;
 	return o;
 }
-
-
-/*
-**
- --------------------------------- METHODS ----------------------------------
-*/
 
 void Form::beSigned(const Bureaucrat& crat)
 {

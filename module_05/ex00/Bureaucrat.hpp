@@ -6,17 +6,17 @@
 class Bureaucrat
 {
     private:
-        std::string const name;
-        unsigned int grade;
+        std::string const   name;
+        int                  grade;
     public:
         Bureaucrat();
-        Bureaucrat(std::string const name, unsigned int grade);
+        Bureaucrat(std::string const name, int grade);
         ~Bureaucrat();
         Bureaucrat(const Bureaucrat& other);
         Bureaucrat& operator=(const Bureaucrat& other);
 
         std::string          getName() const;
-        unsigned int         getGrade() const;
+        int                  getGrade() const;
         void                 increment();
         void                 decrement();
 

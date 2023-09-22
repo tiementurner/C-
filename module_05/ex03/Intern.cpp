@@ -1,9 +1,5 @@
 #include "Intern.hpp"
 
-/*
-** ------------------------------- CONSTRUCTOR --------------------------------
-*/
-
 Intern::Intern()
 {
 }
@@ -13,19 +9,9 @@ Intern::Intern( const Intern & src )
 	*this = src;
 }
 
-
-/*
-** -------------------------------- DESTRUCTOR --------------------------------
-*/
-
 Intern::~Intern()
 {
 }
-
-
-/*
-** --------------------------------- OVERLOAD ---------------------------------
-*/
 
 Intern &				Intern::operator=( Intern const & rhs )
 {
@@ -34,14 +20,9 @@ Intern &				Intern::operator=( Intern const & rhs )
 }
 
 
-
-/*
-** --------------------------------- METHODS ----------------------------------
-*/
-
-Form* Intern::makeForm(std::string name, std::string target)
+AForm* Intern::makeForm(std::string name, std::string target)
 {
-	Form* form = NULL;
+	AForm* form = NULL;
 	std::string names[] = {"robotomy request",
 						"presidential pardon",
 						"shrubbery creation"};
@@ -51,24 +32,19 @@ Form* Intern::makeForm(std::string name, std::string target)
 	switch(i)
 	{
 		case 0:
-			form = new RobotomyRequestForm(name, target);
+			form = new RobotomyRequestForm(target);
 			break ;
 		case 1:
-			form = new PresidentialPardonForm(name, target);
+			form = new PresidentialPardonForm(target);
 			break;
 		case 2:
-			form = new ShrubberyCreationForm(name, target);
+			form = new ShrubberyCreationForm(target);
+			break ;
 		case 3:
 			std::cout << "Intern couldn't create form." << std::endl;
 			return (NULL);
 	}
+
 	std::cout << "Intern creates " << name << std::endl;
 	return (form);
 }
-
-/*
-** --------------------------------- ACCESSOR ---------------------------------
-*/
-
-
-/* ************************************************************************** */

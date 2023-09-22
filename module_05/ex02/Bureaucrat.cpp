@@ -37,7 +37,7 @@ std::string Bureaucrat::getName() const
     return (this->name);
 }
 
-unsigned int     Bureaucrat::getGrade() const
+int     Bureaucrat::getGrade() const
 {
     return (this->grade);
 }
@@ -62,7 +62,7 @@ std::ostream & operator<<(std::ostream & obj, Bureaucrat & input)
     return (obj);
 }
 
-void    Bureaucrat::signForm(Form & form)
+void    Bureaucrat::signForm(AForm & form)
 {
     try
     {
@@ -76,7 +76,7 @@ void    Bureaucrat::signForm(Form & form)
     
 }
 
-void     Bureaucrat::executeForm(Form const &form)
+void     Bureaucrat::executeForm(AForm const &form)
 {
     try
     {

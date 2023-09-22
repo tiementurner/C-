@@ -7,23 +7,23 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 
 	public:
 
-		Form();
-		Form(const std::string& name, const std::string& target, const unsigned int sign_grade, const unsigned int exec_grade);
-		Form(const std::string name, const unsigned int exec_grade, const unsigned sign_grade);
-		Form( Form const & src );
-		~Form();
+		AForm();
+		AForm(const std::string& name, const std::string& target, const int sign_grade, const int exec_grade);
+		AForm(const std::string name, const int exec_grade, const int sign_grade);
+		AForm( AForm const & src );
+		~AForm();
 
-		Form &		operator=( Form const & rhs );
+		AForm &		operator=( AForm const & rhs );
 
 		std::string			 get_target() const;
 		std::string          get_name() const;
-        unsigned int         get_exec_grade()const;
-		unsigned int		 get_sign_grade()const;
+        int         		 get_exec_grade()const;
+		int		 		     get_sign_grade()const;
 		bool				 get_signed()const;
 
 		void				 beSigned(const Bureaucrat & crat);
@@ -39,12 +39,12 @@ class Form
 					return ("Grade too high.");
 				}	
 		};
-		class FormNotSignedException : public std::exception 
+		class AFormNotSignedException : public std::exception 
 		{
 			public:
 				const char * what() const throw()
 				{
-					return ("Form is not signed.");
+					return ("AForm is not signed.");
 				}	
 		};
 		class GradeTooLowException : public std::exception 
@@ -55,21 +55,21 @@ class Form
 					return ("Grade too low.");
 				}	
 		};
-		class FormAlreadySigned : public std::exception
+		class AFormAlreadySigned : public std::exception
 		{
 			public:
 			const char * what() const throw()
 			{
-				return ("Form Already signed.");
+				return ("AForm Already signed.");
 			}
 		};
 		private:
 		std::string 		const	target;
 		std::string 		const	name;
-		unsigned int		const	exec_grade;
-		unsigned int 		const	sign_grade;
+		int					const	exec_grade;
+		int 				const	sign_grade;
 		bool 						_signed;
 
 };
 
-std::ostream &			operator<<( std::ostream & o, Form const & i );
+std::ostream &			operator<<( std::ostream & o, AForm const & i );

@@ -1,18 +1,18 @@
-#ifndef SHRUBBERYCREATIONFORM_HPP
-# define SHRUBBERYCREATIONFORM_HPP
+#pragma once
 
-# include "Form.hpp"
+
+# include "AForm.hpp"
 # include <iostream>
 # include <string>
 # include <fstream>
 
-class ShrubberyCreationForm : public Form
+class ShrubberyCreationForm : public AForm
 {
 
 	public:
 
 		ShrubberyCreationForm();
-		ShrubberyCreationForm(std::string name, std::string target);
+		ShrubberyCreationForm(std::string target);
 		ShrubberyCreationForm( ShrubberyCreationForm const & src );
 		~ShrubberyCreationForm();
 
@@ -26,4 +26,3 @@ class ShrubberyCreationForm : public Form
 
 std::ostream &			operator<<( std::ostream & o, ShrubberyCreationForm const & i );
 
-#endif /* ******************************************* SHRUBBERYCREATIONFORM_H */

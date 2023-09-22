@@ -1,12 +1,10 @@
-CC_FLAGS = -Wall -Werror -Wextra -std=c++98
+CC_FLAGS = -Wall -Werror -Wextra -std=c++98 -MD
 
-NAME = ex00
+NAME = ex01
 
 CC = c++
 
 FILES = main.cpp \
-		
-HEADERS = easyfind.hpp
 
 OFILES = $(FILES:.cpp=.o)
 

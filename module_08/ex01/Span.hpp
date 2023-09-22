@@ -7,6 +7,7 @@
 class Span
 {
 public:
+    typedef std::vector<int>::iterator Iterator;
     Span();
     ~Span();
     Span(unsigned int n);
@@ -14,12 +15,14 @@ public:
     Span& operator=(const Span& other);
 
     void addNumber(int n);
-    void addRange(std::vector<int>::iterator start, std::vector<int>::iterator end);
+    void addRange(Iterator start, Iterator end);
 
     void print();
 
     unsigned int shortestSpan() const;
     unsigned int longestSpan() const;
+
+
 private:
     unsigned int        maximum;
     unsigned int        filled;

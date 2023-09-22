@@ -18,8 +18,10 @@ WrongAnimal::WrongAnimal(const WrongAnimal& a) {
 
 WrongAnimal& WrongAnimal::operator=(const WrongAnimal &a)
 {
-	this->type = a.type;
+	if (this != &a)
+		this->type = a.type;
 	std::cout << "WrongAnimal assignment" << std::endl;
+	return (*this);
 }
 
 std::string WrongAnimal::get_type() const

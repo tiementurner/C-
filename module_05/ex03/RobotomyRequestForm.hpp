@@ -1,17 +1,16 @@
-#ifndef ROBOTOMYREQUESTFORM_HPP
-# define ROBOTOMYREQUESTFORM_HPP
+#pragma once
 
-# include "Form.hpp"
+# include "AForm.hpp"
 # include <iostream>
 # include <string>
 
-class RobotomyRequestForm : public Form
+class RobotomyRequestForm : public AForm
 {
 
 	public:
 
 		RobotomyRequestForm();
-		RobotomyRequestForm(std::string name, std::string target);
+		RobotomyRequestForm(std::string target);
 		RobotomyRequestForm( RobotomyRequestForm const & src );
 		~RobotomyRequestForm();
 
@@ -25,4 +24,3 @@ class RobotomyRequestForm : public Form
 
 std::ostream &			operator<<( std::ostream & o, RobotomyRequestForm const & i );
 
-#endif /* ********************************************* ROBOTOMYREQUESTFORM_H */

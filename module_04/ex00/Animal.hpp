@@ -6,7 +6,7 @@ class Animal
 {
 	public:
 		Animal();
-		~Animal();
+		virtual ~Animal();
 		Animal(const Animal& a);
 		Animal&  operator=(const Animal& a);
 

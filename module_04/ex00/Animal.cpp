@@ -1,6 +1,6 @@
 #include "Animal.hpp"
 
-Animal::Animal() : type("beest")
+Animal::Animal() : type("Animal")
 {
 	std::cout << "animal constructor" << std::endl;
 }
@@ -20,6 +20,7 @@ Animal& Animal::operator=(const Animal &a)
 {
 	this->type = a.type;
 	std::cout << "animal assignment" << std::endl;
+	return (*this);
 }
 
 std::string Animal::get_type() const

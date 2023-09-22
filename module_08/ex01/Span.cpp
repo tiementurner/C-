@@ -57,51 +57,56 @@ bool compare_lowest(int i, int j)
 unsigned int Span::shortestSpan() const
 {
     std::vector<int> temp(storage);
-    unsigned int diff;
+    int diff;
 
     if (storage.size() <= 1)
         throw(std::range_error("shortestSpan err: Not enough numbers stored."));
     
-    std::sort (temp.begin(), temp.end());
     std::vector<int>::iterator i;
     std::vector<int>::iterator next;
     diff = *std::next(temp.begin(), 1) - *temp.begin();
     for(i = begin(temp); i != end(temp); ++i)
     {
         next = std::next(i, 1);
-        if (next == end(temp))
-            return (diff);
+        if (i == end(temp))
+            break;
         if (*next - *i < (int)diff)
             diff = *next - *i;
     }
-    return (diff);
+    if (diff < 0)
+        diff *= -1;
+    return (static_cast<unsigned int>(diff));
     
 }
 
 unsigned int Span::longestSpan() const
 {
+    //FIXEN
     std::vector<int> temp(storage);
-    unsigned int diff;
+    int diff;
 
     if (storage.size() <= 1)
-        throw(std::range_error("shortestSpan err: Not enough numbers stored."));
+        throw(std::range_error("longestSpan err: Not enough numbers stored."));
 
-    std::sort (temp.begin(), temp.end());
     std::vector<int>::iterator i;
     std::vector<int>::iterator next;
     diff = *std::next(temp.begin(), 1) - *temp.begin();
     for(i = begin(temp); i != end(temp); ++i)
     {
         next = std::next(i, 1);
-        if (next == end(temp))
-            return (diff);
+        if (i == end(temp))
+            break;
         if (*next - *i > (int)diff)
             diff = *next - *i;
+        std::cout << diff << std::endl;
     }
+    std::cout << diff << std::endl;
+    if (diff < 0)
+        diff *= -1;
     return (diff);
 }
 
-void Span::addRange(std::vector<int>::iterator start, std::vector<int>::iterator end) {
+void Span::addRange(Iterator start, Iterator end) {
 	unsigned int temp_size = storage.size();
     if (filled + std::distance(start, end) > this->maximum) {
 		throw std::range_error("addRange err: Range too big for span.");

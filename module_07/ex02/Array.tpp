@@ -1,6 +1,3 @@
-#pragma once
-
-
 template <typename T>
 Array<T>::Array() :ptr(NULL),
                    number_of_elements(0){}

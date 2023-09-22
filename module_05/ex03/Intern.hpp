@@ -1,7 +1,6 @@
-#ifndef INTERN_HPP
-# define INTERN_HPP
+#pragma once
 
-# include "Form.hpp"
+# include "AForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
@@ -19,11 +18,8 @@ class Intern
 
 		Intern &		operator=( Intern const & rhs );
 
-		Form* makeForm(std::string name, std::string target);
+		AForm* makeForm(std::string name, std::string target);
 
 	private:
 
 };
-
-
-#endif /* ********************************************************** INTERN_H */
