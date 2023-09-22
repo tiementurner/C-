@@ -25,4 +25,14 @@ MutantStack<T, Container>& MutantStack<T, Container>::operator=(const MutantStac
     return (*this);
 }
 
+template <typename T, class Container>
+typename Container::iterator MutantStack<T, Container>::begin()
+{
+	return (this->c.begin());
+}
 
+template <typename T, class Container>
+typename Container::iterator MutantStack<T, Container>::end()
+{
+	return (this->c.end());
+}
