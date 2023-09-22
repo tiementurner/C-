@@ -23,9 +23,13 @@ public:
     unsigned int longestSpan() const;
 
 
+
+
 private:
     unsigned int        maximum;
     unsigned int        filled;
     std::vector<int>    storage;
+    static int                 max(int x, int y);
+    static int                 min(int x, int y);
 };
 

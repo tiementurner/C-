@@ -49,60 +49,76 @@ void    Span::print()
     std::cout << '\n';
 }
 
-bool compare_lowest(int i, int j)
+int Span::max(int x, int y)
 {
-    return (i < j);
+    if (x < y)
+        return (y);
+    if (y < x)
+        return (x);
+    else
+        return (y);
+}
+
+int Span::min(int x, int y)
+{
+    if (x > y)
+        return (y);
+    if (y > x)
+        return (x);
+    else
+        return (y);
 }
 
 unsigned int Span::shortestSpan() const
 {
     std::vector<int> temp(storage);
-    int diff;
+    unsigned int diff = 0;
+    unsigned int tmp = 0;
 
     if (storage.size() <= 1)
         throw(std::range_error("shortestSpan err: Not enough numbers stored."));
     
     std::vector<int>::iterator i;
     std::vector<int>::iterator next;
-    diff = *std::next(temp.begin(), 1) - *temp.begin();
+    diff =  max(*std::next(temp.begin(), 1), *temp.begin()) - 
+            min(*std::next(temp.begin(), 1), *temp.begin());
+
     for(i = begin(temp); i != end(temp); ++i)
     {
         next = std::next(i, 1);
-        if (i == end(temp))
+        if (next == end(temp))
             break;
-        if (*next - *i < (int)diff)
-            diff = *next - *i;
+        tmp = max(*next, *i) - min(*next, *i);
+        if (diff > tmp)
+            diff = tmp;
     }
-    if (diff < 0)
-        diff *= -1;
-    return (static_cast<unsigned int>(diff));
+    return (diff);
     
 }
 
 unsigned int Span::longestSpan() const
 {
-    //FIXEN
     std::vector<int> temp(storage);
-    int diff;
+    unsigned int diff = 0;
+    unsigned int tmp = 0;
 
     if (storage.size() <= 1)
         throw(std::range_error("longestSpan err: Not enough numbers stored."));
 
     std::vector<int>::iterator i;
     std::vector<int>::iterator next;
-    diff = *std::next(temp.begin(), 1) - *temp.begin();
+    diff =  max(*std::next(temp.begin(), 1), *temp.begin()) - 
+            min(*std::next(temp.begin(), 1), *temp.begin());
+
     for(i = begin(temp); i != end(temp); ++i)
     {
         next = std::next(i, 1);
-        if (i == end(temp))
+        if (next == end(temp))
             break;
-        if (*next - *i > (int)diff)
-            diff = *next - *i;
-        std::cout << diff << std::endl;
+        tmp = max(*next, *i) - min(*next, *i);
+        if (diff < tmp)
+            diff = tmp;
     }
-    std::cout << diff << std::endl;
-    if (diff < 0)
-        diff *= -1;
     return (diff);
 }
 
