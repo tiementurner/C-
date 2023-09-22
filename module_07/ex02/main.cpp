@@ -13,6 +13,7 @@ void run()
     std::cout << "size of empty array: " << string_array.size() << std::endl;
 
     string_array[2] = "hoi";
+	std::cout << string_array[2] << std::endl;
     try{std::cout << string_array[5];}
     catch(const std::exception &e)
     {
@@ -20,10 +21,10 @@ void run()
     }
     std::cout << integer_array[3] << std::endl;
 
-    try{
-    integer_array[-1]= 0;
-    }catch(const std::exception &e){std::cout << e.what() << std::endl;}
-    integer_array[0] = 1;
+    try{integer_array[-1]= 0;}
+	catch(const std::exception &e){std::cout << e.what() << std::endl;}
+    
+	integer_array[0] = 1;
     integer_array[1] = 2;
     integer_array[2] = 3;
     integer_array[3] = 4;

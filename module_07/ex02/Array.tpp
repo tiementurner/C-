@@ -35,8 +35,8 @@ Array<T>& Array<T>::operator=(const Array<T>& other)
     {
         if (this->ptr != NULL)
             delete []this->ptr;
-            this->ptr = new T[other.size()];
-            this->number_of_elements = other.size();
+        this->ptr = new T[other.size()];
+        this->number_of_elements = other.size();
     }
     for (std::size_t i = 0; i < this->number_of_elements; i++)
         this->ptr[i] = other[i];
