@@ -24,13 +24,13 @@ int main( void )
     int         array_two[7] = {1, 2 ,3, 4, 5, 6, 7};
     char        array_three[5] = {'a', 'b', 'c', 'd', 'e'};
 
-    iter(array_one, sizeof(array_one), write);
-    iter(array_two, sizeof(array_two), write);
-    iter(array_three, sizeof(array_three), write);
+    iter(array_one, 3, write);
+    iter(array_two, 7, write);
+    iter(array_three, 5, write);
 
     std::cout << std::endl;
 
-    iter(array_two, sizeof(array_two), write_if_uneven);
-    iter(array_three, sizeof(array_three), write_char);
+    iter(array_two, 7, write_if_uneven);
+    iter(array_three, 5, write_char);
     return 0;
 }
