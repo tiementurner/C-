@@ -38,7 +38,7 @@ int main()
     simple_two.addNumber(42);
     simple_two.addNumber(5);
     simple_two.addNumber(9939);
-    simple_two.addNumber(345);
+    simple_two.addNumber(-42);
     simple_two.addNumber(3213453);
     try{simple_two.addNumber(233);}
     catch(const std::length_error &e){std::cout << e.what() << std::endl;}
@@ -47,15 +47,15 @@ int main()
     std::cout << "longest span = " << simple_two.longestSpan() << std::endl;
     std::cout << "\n\n";
     
-    // Span huge(20000);
-    // std::vector<int> vectortje(10000);
-    // for(int i = 0; i < 10000; i++)
-    //     vectortje[i] = i;
-    // huge.addRange(vectortje.begin(), vectortje.end());
-    // huge.addRange(vectortje.begin(), vectortje.end());
-    // huge.print();
-    // std::cout << "shortest span = " << huge.shortestSpan() << std::endl;
-    // std::cout << "longest span = " << huge.longestSpan() << std::endl;
-    // try{huge.addRange(vectortje.begin(), vectortje.end());}
-    // catch(const std::range_error &e){std::cout << e.what() << std::endl;}
+    Span huge(20000);
+    std::vector<int> vectortje(10000);
+    for(int i = 0; i < 10000; i++)
+        vectortje[i] = i;
+    huge.addRange(vectortje.begin(), vectortje.end());
+    huge.addRange(vectortje.begin(), vectortje.end());
+    huge.print();
+    std::cout << "shortest span = " << huge.shortestSpan() << std::endl;
+    std::cout << "longest span = " << huge.longestSpan() << std::endl;
+    try{huge.addRange(vectortje.begin(), vectortje.end());}
+    catch(const std::range_error &e){std::cout << e.what() << std::endl;}
 }

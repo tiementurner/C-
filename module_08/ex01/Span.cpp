@@ -49,26 +49,6 @@ void    Span::print()
     std::cout << '\n';
 }
 
-int Span::max(int x, int y)
-{
-    if (x < y)
-        return (y);
-    if (y < x)
-        return (x);
-    else
-        return (y);
-}
-
-int Span::min(int x, int y)
-{
-    if (x > y)
-        return (y);
-    if (y > x)
-        return (x);
-    else
-        return (y);
-}
-
 unsigned int Span::shortestSpan() const
 {
     std::vector<int> temp(storage);
@@ -80,46 +60,33 @@ unsigned int Span::shortestSpan() const
     
     std::vector<int>::iterator i;
     std::vector<int>::iterator next;
-    diff =  max(*std::next(temp.begin(), 1), *temp.begin()) - 
-            min(*std::next(temp.begin(), 1), *temp.begin());
 
+	std::sort(begin(temp), end(temp));
+
+	diff = *begin(temp) - *std::next(begin(temp), 1);
     for(i = begin(temp); i != end(temp); ++i)
     {
         next = std::next(i, 1);
         if (next == end(temp))
             break;
-        tmp = max(*next, *i) - min(*next, *i);
+        tmp = *next - *i;
         if (diff > tmp)
             diff = tmp;
     }
     return (diff);
-    
 }
 
 unsigned int Span::longestSpan() const
 {
     std::vector<int> temp(storage);
     unsigned int diff = 0;
-    unsigned int tmp = 0;
 
-    if (storage.size() <= 1)
-        throw(std::range_error("longestSpan err: Not enough numbers stored."));
-
-    std::vector<int>::iterator i;
-    std::vector<int>::iterator next;
-    diff =  max(*std::next(temp.begin(), 1), *temp.begin()) - 
-            min(*std::next(temp.begin(), 1), *temp.begin());
-
-    for(i = begin(temp); i != end(temp); ++i)
-    {
-        next = std::next(i, 1);
-        if (next == end(temp))
-            break;
-        tmp = max(*next, *i) - min(*next, *i);
-        if (diff < tmp)
-            diff = tmp;
-    }
+	if (storage.size() <= 1)
+    	throw(std::range_error("longestSpan err: Not enough numbers stored."));
+	
+	diff = *std::max_element(begin(temp), end(temp))-*std::min_element(begin(temp), end(temp));
     return (diff);
+
 }
 
 void Span::addRange(Iterator start, Iterator end) {
