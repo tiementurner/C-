@@ -15,7 +15,7 @@ int main(int ac, char** av)
 	if (!btc.is_open)
 		return (0);
 
-
+	btc.process();
 
 	// std::string line;
 
