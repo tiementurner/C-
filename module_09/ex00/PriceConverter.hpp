@@ -13,7 +13,7 @@ class PriceConverter
 {
 
 	private:
-		std::fstream 					file;
+		std::fstream 							file;
 		std::map<std::string, std::string> 		database;
 		
 	public:
