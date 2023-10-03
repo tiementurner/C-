@@ -3,7 +3,6 @@
 template <typename T, class Container>
 MutantStack<T, Container>::MutantStack()
 {
-    this->storage = std::stack<T, Container>();
 }
 
 template <typename T, class Container>
@@ -20,9 +19,12 @@ MutantStack<T, Container>::MutantStack(const MutantStack &other)
 template <typename T, class Container>
 MutantStack<T, Container>& MutantStack<T, Container>::operator=(const MutantStack &other)
 {
+	std::deque<int>::iterator it;
     if (this != &other)
-        this->storage = other.storage;
-    return (*this);
+	{
+        this->c = other.c;
+	}
+	return (*this);
 }
 
 template <typename T, class Container>

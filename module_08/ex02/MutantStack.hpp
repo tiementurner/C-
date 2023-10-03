@@ -19,9 +19,6 @@ class MutantStack: public std::stack<T, Container>
 
         iterator    begin();
         iterator    end();
-
-    private:
-        std::stack<T, Container> storage;
 };
 
 #include "MutantStack.tpp"
