@@ -10,7 +10,6 @@ int main(int ac, char** av)
 		std::cout << "Error: not enough arguments(1 needed).";
 		return (0);
 	}
-
 	PriceConverter btc(av[1]);
 	if (!btc.is_open)
 		return (0);

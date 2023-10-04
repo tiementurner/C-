@@ -15,7 +15,10 @@ class PriceConverter
 	private:
 		std::fstream 							file;
 		std::map<std::string, std::string> 		database;
-		
+		int										year;
+		int										month;
+		int										day;
+		float									amount;
 	public:
 		PriceConverter();
 		PriceConverter(std::string filename);
@@ -24,13 +27,15 @@ class PriceConverter
 		PriceConverter &		operator=( PriceConverter const & rhs );
 		
 
-		void 	open_file(std::string filename);
-		bool 	is_open;
+		void 		open_file(std::string filename);
+		bool 		is_open;
 
-		bool 	validate(std::string);
-		void	fill_lines();
+		bool 		validate_date(std::string date);
+		bool		validate_amount(std::string amount);
+		
+		void		convert_price();
 
-		void 	process();
+		void 		process();
 
 
 };
