@@ -7,14 +7,23 @@
 #define MUL 3
 #define DIV 4
 
+template <typename T, typename Operator>
+void apply_operator(std::stack<T>& result, Operator op)
+{
+    T x = result.top();
+    result.pop();
+    T y = result.top();
+    result.pop();
+    result.push(op(y, x));
+}
+
 
 int eval_expresion(std::string expression)
 {
-	int x = 0;
-	int y = 0;
 	std::stack<int> result;
 	for (int i = 0; expression[i]; i++)
 	{
+		
 		if (isdigit(expression[i]))
 		{
 			result.push(expression[i] - 48);
@@ -26,21 +35,13 @@ int eval_expresion(std::string expression)
 			exit(0);
 		}
 		else if(expression[i] == '+')
-		{
-			x = result.top();
-			result.pop();
-			y = result.top();
-			result.pop();
-			result.push(x + y);
-		}
+			apply_operator(result, std::plus<int>());
 		else if(expression[i] == '-')
-		{
-			x = result.top();
-			result.pop();
-			y = result.top();
-			result.pop();
-			result.push(y - x);
-		}//andere operations adden.
+			apply_operator(result, std::minus<int>());
+		else if(expression[i] == '*')
+			apply_operator(result, std::multiplies<int>());
+		else if(expression[i] == '/')
+			apply_operator(result, std::divides<int>());
 	}
 	if (result.size() == 2)
 	{

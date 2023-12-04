@@ -95,7 +95,6 @@ bool PriceConverter::validate_date(std::string date)
 
 	if (c.size() != 3)
 		return(false);
-	
 	for (int i = 0; i < 3; i++)
 	{
 		std::string checkdate = c[i];
@@ -125,6 +124,10 @@ bool PriceConverter::validate_date(std::string date)
 				return(false);	
 		}
 	}
+	// if (month < 10)
+	// 	this->month = "0" + (48 + month);
+	// else
+	// 	this->month = itoa(month);
 	return (true);
 }
 
@@ -132,9 +135,9 @@ bool PriceConverter::validate_amount(std::string amount)
 {
 
 	for (int i = 0; amount[i]; i++)
-		if (!isdigit(amount[i]) && !(amount[i] == '.'))
+		if (!isdigit(amount[i]) && !(amount[i] == '.') && !(amount[i] == '-'))
 		{
-			std::cout << "Error: invalid input => " << amount << std::endl;
+			std::cout << "Error: invalid btc amount input => " << amount << std::endl;
 			return (false);
 		}
 	if (stod(amount) < 0)
@@ -152,18 +155,40 @@ bool PriceConverter::validate_amount(std::string amount)
 }
 
 void PriceConverter::convert_price()
-{
-	// std::map<std::string, std::string>::iterator it;
+{	
+	float multiplier;
+	std::map<std::string, std::string>::iterator it;
 	std::string key = "";
+
 	if (year < 2009)
 		key += "2009";
 	else if (year > 2022)
-		key += "2022";
+		key += "2022-";
 	else
-		key = std::to_string(year);
-	key = key + "-" + std::to_string(month) + "-" + std::to_string(day);
-	//key vinden in database
+		key = std::to_string(year) + "-";
+	if (month < 10)
+		key += "0";
+	key += std::to_string(month) + "-";
+	if (day < 10)
+		key += "0";
+	key += std::to_string(day);
 
+	std::cout << " = ";
+
+	it = this->database.find(key);
+	if (it != this->database.end())
+	{
+		multiplier = std::stof(it->second);
+		std::cout << multiplier * this->amount << std::endl;
+	}
+	else {
+		it = this->database.lower_bound(key);
+		if (it != this->database.begin())
+			it = std::prev(it);
+		multiplier = std::stof(it->second);
+		std::cout << multiplier * this->amount << std::endl;
+	}
+	return ;
 }
 
 void PriceConverter::process()
@@ -187,12 +212,11 @@ void PriceConverter::process()
 			continue;
 		if (!validate_date(date))
 		{
-			std::cout << "Error: bad input => " + date << std::endl;
+			std::cout << "Error: bad date => " + date << std::endl;
 			continue;
 		}
 		else
-			std::cout << date << " => " << amount << std::endl;
-		
+			std::cout << date << " => " << amount;
 		convert_price();
 		//break;
 	}
