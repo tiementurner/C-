@@ -6,27 +6,14 @@
 
 PriceConverter::PriceConverter()
 {
-	std::fstream database_file;
-	database_file.open("data.csv", std::ios::in);
-	if(database_file)
-	{
-		std::cout << "Error: Failed to open data.csv." << std::endl;
-		this->is_open = false;
-		return ;
-	}
-	std::string line;
-	std::regex delimiter{","};
-	while (getline(database_file, line))
-	{
-		std::vector<std::string> c(std::sregex_token_iterator(line.begin(), line.end(), delimiter, -1), {});
-		this->database[*c.begin()] = *std::next(c.begin(), 1);
-	}
+
 }
 
 
 PriceConverter::PriceConverter(std::string filename)
 {
-	open_file(filename);
+	this->open_file(filename);
+
 	std::fstream database_file;
 	database_file.open("data.csv", std::ios::in);
 	if(!database_file)
@@ -39,10 +26,11 @@ PriceConverter::PriceConverter(std::string filename)
 	std::regex delimiter{",{1}"};
 	while (getline(database_file, line))
 	{
-		std::vector<std::string> c(std::sregex_token_iterator(line.begin(), line.end(), delimiter, -1), {});
+		std::deque<std::string> c(std::sregex_token_iterator(line.begin(), line.end(), delimiter, -1), std::sregex_token_iterator());
 		this->database[*c.begin()] = *std::next(c.begin(), 1);
 	}
 }
+//map[key] = element
 
 PriceConverter::PriceConverter( const PriceConverter & src )
 {
@@ -77,8 +65,6 @@ PriceConverter &				PriceConverter::operator=( PriceConverter const & rhs )
 
 void PriceConverter::open_file(std::string filename)
 {
-
-
 	this->file.open(filename.c_str(), std::ios::in);
 	if(!this->file)
 	{
@@ -91,7 +77,7 @@ void PriceConverter::open_file(std::string filename)
 bool PriceConverter::validate_date(std::string date)
 {
 	std::regex delimiter{"-"};
-	std::vector<std::string> c(std::sregex_token_iterator(date.begin(), date.end(), delimiter, -1), {});
+	std::deque<std::string> c(std::sregex_token_iterator(date.begin(), date.end(), delimiter, -1), {});
 
 	if (c.size() != 3)
 		return(false);
@@ -160,18 +146,19 @@ void PriceConverter::convert_price()
 	std::map<std::string, std::string>::iterator it;
 	std::string key = "";
 
-	if (year < 2009)
-		key += "2009";
-	else if (year > 2022)
-		key += "2022-";
-	else
-		key = std::to_string(year) + "-";
+	key = std::to_string(year) + "-";
 	if (month < 10)
 		key += "0";
 	key += std::to_string(month) + "-";
 	if (day < 10)
 		key += "0";
+	
 	key += std::to_string(day);
+
+	if (year < 2009)
+		key += "2009-01-02";
+	if (year > 2022)
+		key += "2022-03-29";
 
 	std::cout << " = ";
 
@@ -200,6 +187,7 @@ void PriceConverter::process()
 	while(std::getline(this->file, line))
 	{
 		line.erase(std::remove(line.begin(), line.end(), ' '), line.end());
+		line.erase(std::remove(line.begin(), line.end(), '\t'), line.end());
 		pipe = line.find("|");
 		if (pipe == std::string::npos || pipe == line.length() - 1)
 		{

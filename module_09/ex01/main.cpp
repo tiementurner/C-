@@ -29,11 +29,6 @@ int eval_expresion(std::string expression)
 			result.push(expression[i] - 48);
 			continue;
 		}
-		if (result.size() != 2)
-		{
-			std::cout << "Error." << std::endl;
-			exit(0);
-		}
 		else if(expression[i] == '+')
 			apply_operator(result, std::plus<int>());
 		else if(expression[i] == '-')
@@ -55,24 +50,24 @@ int main(int ac, char **argv)
 {
 	if (ac != 2)
 		std::cout << "1 argument required." << std::endl;
-	
-	std::stack<char> polish_stack;
-	std::string polish_string = argv[1];
-	std::string available_chars = "0123456789+-*/";
+	else {
+		std::stack<char> polish_stack;
+		std::string polish_string = argv[1];
+		std::string available_chars = "0123456789+-*/";
 
-	std::string::iterator end_pos = std::remove(polish_string.begin(), polish_string.end(), ' ');
-	polish_string.erase(end_pos, polish_string.end());
+		std::string::iterator end_pos = std::remove(polish_string.begin(), polish_string.end(), ' ');
+		polish_string.erase(end_pos, polish_string.end());
 
 
-	for(int i = polish_string.length() - 1; i > -1; i--)
-	{
-		
-		if (available_chars.find(polish_string[i]) == std::string::npos)
+		for(int i = polish_string.length() - 1; i > -1; i--)
 		{
-			std::cout << "invalid characters found." << std::endl;
-			exit(0);
+			if (available_chars.find(polish_string[i]) == std::string::npos)
+			{
+				std::cout << "invalid characters found." << std::endl;
+				exit(0);
+			}
+			polish_stack.push(polish_string[i]);
 		}
-		polish_stack.push(polish_string[i]);
+		std::cout << eval_expresion(polish_string) << std::endl;
 	}
-	std::cout << eval_expresion(polish_string) << std::endl;
 }

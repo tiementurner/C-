@@ -4,7 +4,9 @@ NAME = PmergeMe
 
 CC = c++
 
-FILES = main.cpp
+FILES = main.cpp \
+		ford_list.cpp \
+		ford_vector.cpp 
 
 
 OFILES = $(FILES:.cpp=.o)

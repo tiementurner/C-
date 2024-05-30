@@ -6,7 +6,7 @@
 # include <fstream>
 # include <map>
 # include <regex>
-#include <vector>
+#include <deque>
 #include <iterator>
 
 class PriceConverter

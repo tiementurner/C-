@@ -1,0 +1,32 @@
+Example List [8, 3, 7, 5, 2, 6, 4, 1]
+
+Pair up the elements and sort each pair:
+
+    (8, 3) → (3, 8)
+    (7, 5) → (5, 7)
+    (2, 6) → (2, 6)
+    (4, 1) → (1, 4)
+
+Result: [(3, 8), (5, 7), (2, 6), (1, 4)]
+
+    Compare (3, 8) with (5, 7):
+        3 < 5, so 3 is the smallest.
+        Now, compare 8 with 5: 5 < 8.
+        Compare 8 with 7: 7 < 8.
+        Result after merging: [3, 5, 7, 8]
+
+    Compare the next pair (2, 6) with the sorted sequence [3, 5, 7, 8]:
+        2 < 3, so insert 2 at the beginning.
+        Compare 6 with 5: 5 < 6.
+        Compare 6 with 7: 6 < 7.
+        Result after merging: [2, 3, 5, 6, 7, 8]
+
+    Compare the next pair (1, 4) with the sorted sequence [2, 3, 5, 6, 7, 8]:
+        1 < 2, so insert 1 at the beginning.
+        Compare 4 with 3: 3 < 4.
+        Compare 4 with 5: 4 < 5.
+        Result after merging: [1, 2, 3, 4, 5, 6, 7, 8]
+
+Since there were no unpaired elements initially, we are done.
+
+Final Sorted List: [1, 2, 3, 4, 5, 6, 7, 8]

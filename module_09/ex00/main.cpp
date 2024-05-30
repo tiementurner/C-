@@ -1,8 +1,6 @@
 #include <iostream>
 #include "PriceConverter.hpp"
 
-//https://github.com/PunkChameleon/ford-johnson-merge-insertion-sort
-
 int main(int ac, char** av)
 {
 	if (ac != 2)
