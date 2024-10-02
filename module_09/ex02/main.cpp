@@ -37,12 +37,12 @@ int main(int ac, char **av)
 	
 	
 	clock_t start_vector = clock();
-	ford_johnson_vector(ford_vector);
+	merge_insert_sort_vector(ford_vector);
 	clock_t end_vector = clock();
 
 	
 	std::cout << "After: ";
-	for (auto x: ford_list)
+	for (auto x: ford_vector)
 		std::cout << x << " ";	
 	std::cout << std::endl;
 	

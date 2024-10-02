@@ -3,20 +3,20 @@
 
 static void	merge_insert_list(std::list<int> &ford_list, std::list<int> &left_side, std::list<int> &right_side)
 {
-	//std::cout << "in merge insert: " << reinterpret_cast<void *>(&ford_list) << std::endl;
-	for(std::list<int>::iterator it = ford_list.begin(); it != ford_list.end(); it++)
-		std::cout << *it << " ";
+	// //std::cout << "in merge insert: " << reinterpret_cast<void *>(&ford_list) << std::endl;
+	// for(std::list<int>::iterator it = ford_list.begin(); it != ford_list.end(); it++)
+	// 	std::cout << *it << " ";
 
-	std::cout << std::endl;
+	// std::cout << std::endl;
 
-	std::cout << "left side: " ;
-	for(std::list<int>::iterator it = left_side.begin(); it != left_side.end(); it++)
-		std::cout << *it << " ";
+	// std::cout << "left side: " ;
+	// for(std::list<int>::iterator it = left_side.begin(); it != left_side.end(); it++)
+	// 	std::cout << *it << " ";
 
-	std::cout << "right side: " ;
-	for(std::list<int>::iterator it = right_side.begin(); it != right_side.end(); it++)
-		std::cout << *it << " ";
-	std::cout << std::endl;
+	// std::cout << "right side: " ;
+	// for(std::list<int>::iterator it = right_side.begin(); it != right_side.end(); it++)
+	// 	std::cout << *it << " ";
+	// std::cout << std::endl;
 
 
 	std::list<int>::iterator iterator_left = left_side.begin();
@@ -77,5 +77,4 @@ void 	ford_johnson_list(std::list<int> &ford_list)
 
 		merge_insert_list(ford_list, left_side, right_side);
 	}
-
 }
