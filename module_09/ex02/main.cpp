@@ -29,10 +29,10 @@ int main(int ac, char **av)
 		ford_list.push_back(atoi(av[i]));
 		std::cout << av[i] << " ";
 	}
-	std::cout << std::endl;
+	std::cout << std::endl << std::endl;
 
 	clock_t start_list = clock();
-	ford_johnson_list(ford_list);
+	merge_insert_sort_list(ford_list);
 	clock_t end_list = clock();
 	
 	
@@ -41,15 +41,22 @@ int main(int ac, char **av)
 	clock_t end_vector = clock();
 
 	
-	std::cout << "After: ";
-	for (auto x: ford_vector)
-		std::cout << x << " ";	
+	std::cout << "After[vector]: ";
+	for (std::vector<int>::iterator it = ford_vector.begin(); it != ford_vector.end(); it++)
+		std::cout << *it << " ";	
 	std::cout << std::endl;
+
+	// // std::cout << "After[list]: ";
+	// // for (std::list<int>::iterator it = ford_list.begin(); it != ford_list.end(); it++)
+	// // 	std::cout << *it << " ";	
+	// // std::cout << std::endl;
 	
-	std::cout << "time for std::list : " << double(end_list - start_list) << std::endl;
-	std::cout << "time for std::vector : " << double(end_vector - start_vector) << std::endl;
+	// std::cout << "time for std::list : " << double(end_list - start_list)<< std::endl;
+	// std::cout << "time for std::vector : " << double(end_vector - start_vector) << std::endl;
 
 	// for (std::list<int>::iterator i = ford_list.begin(); i != ford_list.end(); i++)
 		// std::cout << *i << " ";
+
+	//NIET VERGETEN FLAGS TERUG TE ZETTEN
 
 }

@@ -1,4 +1,4 @@
-CC_FLAGS = -Wall -Werror -Wextra 
+CC_FLAGS = 
 
 NAME = PmergeMe
 

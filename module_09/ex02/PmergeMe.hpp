@@ -9,8 +9,6 @@
 #include <vector>
 #include <algorithm>
 
-void 	ford_johnson_list(std::list<int> &ford_list);
-
-void	ford_johnson_vector(std::vector<int> &ford_vector);
+void 	merge_insert_sort_list(std::list<int> &ford_list);
 
 void 	merge_insert_sort_vector(std::vector<int>& arr);

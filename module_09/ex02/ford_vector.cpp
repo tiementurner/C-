@@ -14,15 +14,11 @@ std::vector<int> generate_jacobsthal_sequence(int length) {
     std::vector<int> jacobsthal = {1, 3};
     while (jacobsthal.back() < length) {
         jacobsthal.push_back(jacobsthal[jacobsthal.size() - 1] + 2 * jacobsthal[jacobsthal.size() - 2]);
-		//std::cout << jacobsthal[jacobsthal.size() - 1] + 2 * jacobsthal[jacobsthal.size() - 2] << std::endl;
     }
-    //jacobsthal.erase(jacobsthal.begin());
-
     return jacobsthal;
 }
 
 void fill_paired_array(const std::vector<int>& input, std::vector<std::pair<int, int>>& paired_array) {
-    // Iterate through the input vector in steps of 2
     for (size_t i = 0; i < input.size(); i += 2) {
         // Create a pair with the current and the next element
         paired_array.emplace_back(input[i], input[i + 1]);
@@ -31,13 +27,12 @@ void fill_paired_array(const std::vector<int>& input, std::vector<std::pair<int,
 
 void sort_each_pair(std::vector<std::pair<int, int>>& paired_array) {
     for (size_t i = 0; i < paired_array.size(); ++i) {
-        std::pair<int, int>& p = paired_array[i]; // Explicitly define the pair
+        std::pair<int, int>& p = paired_array[i];
 
-        // Sort the pair using a temporary variable
         if (p.first > p.second) {
-            int temp = p.first; // Store the first value in a temporary variable
-            p.first = p.second; // Assign the second value to the first
-            p.second = temp; // Assign the temporary value to the second
+            int temp = p.first;
+            p.first = p.second;
+            p.second = temp;
         }
     }
 }
@@ -59,11 +54,15 @@ void sort_by_largest(std::vector<std::pair<int, int>>& paired_array) {
 
 int binary_search(const std::vector<int>& S, int position, int value) {
     int left = 0;
-    int right = position - 1;   
+    int right = position;
+	if (value == 34)
+		std::cout << "mid: " << S[right];   
 
     while (left <= right) {
         int mid = left + (right - left) / 2;
 
+		if (value == 39)
+			std::cout << "mid when value 39 = " << S[mid] << std::endl;
         if (S[mid] == value) {
             return mid;
         }
@@ -80,9 +79,31 @@ int binary_search(const std::vector<int>& S, int position, int value) {
 
 void insert_pend(std::vector<int>& S, int position, int value) {
     int insertIndex = binary_search(S, position, value);
+
+
+	//if (value == 39) {
+		std::cout << "position  = " << position << std::endl;
+	//}
+	if (value == 66) {
+		std::cout << "position when value 66 = " << position << std::endl;
+	}
     
     S.insert(S.begin() + insertIndex, value);
 }
+
+void insert_in_range(std::vector<int>& arr, int element, size_t start, size_t end) {
+    if (start >= arr.size() || end >= arr.size() || start > end) {
+        std::cerr << "Invalid range!" << std::endl;
+        return;
+    }
+
+    // Find the position within the specified range [start, end]
+    auto pos = std::lower_bound(arr.begin() + start, arr.begin() + end + 1, element);
+
+    // Insert the element at the determined position
+    arr.insert(pos, element);
+}
+
 
 void merge_insert_sort_vector(std::vector<int>& arr) {
 	
@@ -90,27 +111,29 @@ void merge_insert_sort_vector(std::vector<int>& arr) {
 	std::vector<int> S;
 	std::vector<int> pend;
     
-	if (arr.size() <= 1) return;
+	if (arr.size() <= 1) 
+		return;
 
-    // Determine if the length is odd or even
+	//determine odd or even
     bool isOdd = arr.size() % 2 != 0;
     int straggler = isOdd ? arr.back() : 0;
     if (isOdd) arr.pop_back();
-
 
 	fill_paired_array(arr, paired_array);
 	sort_each_pair(paired_array);
 	sort_by_largest(paired_array);
 
+
+	//make main chain 'S' and pending chain 'pend' to be inserted into S
 	for (size_t i = 0; i < paired_array.size(); i++)
 		S.push_back(paired_array[i].second);
-
 	for (size_t i = 0; i < paired_array.size(); i++)
 		pend.push_back(paired_array[i].first);
 
 	S.insert(S.begin(), pend[0]);
 
 	std::vector<int> jacobsthal = generate_jacobsthal_sequence(pend.size());
+
 
 	for (size_t i = 1; i < jacobsthal.size(); i++) {
 		int j = jacobsthal[i] - 1;
@@ -120,23 +143,18 @@ void merge_insert_sort_vector(std::vector<int>& arr) {
 		// std::cout << "pend.size: " << pend.size() << std::endl;
 		
 		while (j > (jacobsthal[i - 1] - 1)) {
-			insert_pend(S, (int)paired_array.size(), pend[j]);
-			//std::cout << "j:" << j << "  pend[j]: " << pend[j] << std::endl;
+			insert_in_range(S, pend[j], 0, j + jacobsthal[i - 1] + 1);
+
+			std::cout << "S    -----";
+			for (size_t i = 0; i < S.size(); i++)
+				std::cout << S[i] << ", ";
+			std::cout << std::endl;
 			j--;
 		}
-		std::cout << std::endl;
 	}
+	std::cout << std::endl;
 
 	insert_pend(S, S.size(), straggler);
-
-	// for (auto it : S)
-	// 	std::cout << it << " ";
-	// std::cout << std::endl;
-
-    // for (const auto& p : paired_array) {
-    //     std::cout << "(" << p.first << ", " << p.second << ") ";
-    // }
-    // std::cout << std::endl;
 
 	arr = S;
 }
